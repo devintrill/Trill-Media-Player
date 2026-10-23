@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
+    <Platform Condition="'$(Platform)' == ''">AnyCPU</Platform>
+    <ProjectGuid>{747A00C7-4DC1-4B6A-AC63-A59C8BB5536D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Trill</RootNamespace>
+    <AssemblyName>Trill</AssemblyName>
+    <StartupObject>Trill.App</StartupObject>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <LangVersion>5</LangVersion>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>assets\trill.ico</ApplicationIcon>
+    <FileAlignment>512</FileAlignment>
+    <OutputPath>dist\</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="src\**\*.cs" />
+    <EmbeddedResource Include="src\MainWindow.xaml" Condition="Exists('src\MainWindow.xaml')">
+      <LogicalName>Trill.MainWindow.xaml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\ControlStyles.xaml"><LogicalName>Trill.ControlStyles.xaml</LogicalName></EmbeddedResource>
+    <EmbeddedResource Include="assets\trill-logo-v1.png"><LogicalName>Trill.Logo.png</LogicalName></EmbeddedResource>
+    <None Include="assets\trill.ico" />
+    <None Include="App.config" />
+    <None Include="app.manifest" />
+    <None Include="build.ps1" />
+    <None Include="run.cmd" />
+    <None Include="README.md" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
